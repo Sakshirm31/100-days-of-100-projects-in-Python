@@ -1,5 +1,3 @@
-# 100-days-of-100-projects-in-Python
-Each day making 1 project with different concepts of python language.
 
 hangman_art.py
 
