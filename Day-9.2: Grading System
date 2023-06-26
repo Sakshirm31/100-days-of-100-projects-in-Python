@@ -1,0 +1,34 @@
+from replit import clear
+student_scores = {}
+detail=False
+while not detail :
+  person=input("Enter student Name: ")
+  marks=int(input("Enter marks: "))
+  student_scores[person]=marks
+  more=input("Is there more student,Type-'Yes' or 'No'")
+  m_person=more.lower() 
+  if m_person=="no":
+    detail=True
+    
+student_grades={}
+for names in student_scores:
+   score=student_scores[names]
+  
+   if score>=91:
+    student_grades[names]="A+-Outstanding"
+   elif 90>=score>=81:
+    student_grades[names]="A-Exceeds Expectations"
+   elif 80>=score>=71:
+    student_grades[names]="B+-Good"
+   elif 70>=score>=61:
+    student_grades[names]="B-Acceptable"
+   elif 60>=score>=51:
+    student_grades[names]="C-Work hard"
+   elif 50>=score>=41:
+    student_grades[names]="D-Need to Study hard"
+   else:
+    student_grades[names]="Fail"
+
+clear()
+print(student_scores)
+print(student_grades)
