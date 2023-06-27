@@ -1,4 +1,5 @@
 from replit import clear
+
 student_scores = {}
 detail=False
 while not detail :
