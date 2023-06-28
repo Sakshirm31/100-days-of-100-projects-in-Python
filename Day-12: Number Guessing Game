@@ -1,0 +1,89 @@
+from art import logo
+import random
+from replit import clear
+
+def game():
+  print(logo)
+  print("Welcome to the Number Gussing Game.")
+  print("I m thinking of a number between 1 to 100")
+  difficulty=input("Choose the difficulty level- Type 'easy' or 'hard': ")
+  
+  list=range(1,101)
+  slected_no=random.choice(list)
+  number=int(slected_no)
+ 
+  
+  def guess(num):
+    if num>number:
+      print( "TOO HIGH")
+    elif num<number:
+      print( 'TOO LOW')
+    elif num==number:
+      start=True
+      print("You got it! The answer was:",number)
+    else:
+      print("In valid")
+  
+  def easy():
+    start=False
+    n=10
+    while not start :
+      if n>0:
+        print(f"You have {n}  attempt remaining to guess the number")
+        numb=int(input("Guess the number:"))
+        guess(numb)
+        if numb==number:
+          start=True
+        n-=1
+      else: 
+         start=True
+         print("You have run out of guesses, YOU LOSS")
+         print("The number is:",number)
+        
+  def hard():
+    start=False
+    n=5
+    while not start:
+      if n>0:           
+        print(f"You have {n}  attempt remaining to guess the number")
+        numb=int(input("Guess the number:"))
+        guess(numb)
+        if numb==number:
+          start=True
+          
+        n-=1
+      else: 
+         start=True
+         print("You have run out of guesses, YOU LOSS")
+         print("The number is:",number)
+         
+  if difficulty=="hard":
+    hard() 
+    play_again()
+  else:
+    easy()
+    play_again()
+
+def play_again():
+  play=input("Do you what to play the Game?..Type 'y' for yes and 'n' for no .")
+  if play=='y':
+    clear()
+    game()
+  else:
+    clear()
+
+play_again()
+
+
+
+logo='''
+
+ _____                       _   _                                  _               
+|  __ \                     | | | |                                | |              
+| |  \/_   _  ___  ___ ___  | |_| |__   ___   _ __  _   _ _ __ ___ | |__   ___ _ __ 
+| | __| | | |/ _ \/ __/ __| | __| '_ \ / _ \ | '_ \| | | | '_ ` _ \| '_ \ / _ \ '__|
+| |_\ \ |_| |  __/\__ \__ \ | |_| | | |  __/ | | | | |_| | | | | | | |_) |  __/ |   
+ \____/\__,_|\___||___/___/  \__|_| |_|\___| |_| |_|\__,_|_| |_| |_|_.__/ \___|_|   
+                                                                                    
+                                                                                    
+'''
