@@ -1,0 +1,35 @@
+###main.py###
+
+PLACEHODER="[name]"
+
+with open('./Input/Names/invited_names.txt') as named:
+ names=named.readlines()
+  
+ with open('./Input/Letters/starting_letter.txt') as data:
+   content=data.read()
+   for name in names:
+     splitted_name=name.strip()
+     newletter=content.replace(PLACEHODER,splitted_name)
+       
+     with open(f"./Output/ReadyToSend/Format_of_letter({splitted_name}).docx","w") as ready_letter:
+       ready_letter.write(newletter)
+
+
+###starting_letter.txt##
+Dear [name],
+
+You are invited to my birthday this Saturday.
+
+Hope you can make it!
+
+Sakshi M
+
+###invited_name.txt###
+Aang
+Zuko
+Appa
+Katara
+Sokka
+Momo
+Uncle Iroh
+Toph
