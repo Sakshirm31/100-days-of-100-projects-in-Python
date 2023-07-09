@@ -35,14 +35,13 @@ while is_game_on:
         scoreboard.score_increase()
 
     if snake.head.xcor()>290 or snake.head.ycor()>290 or snake.head.xcor()<-290 or snake.head.ycor()<-290:
-        is_game_on=False
-        scoreboard.game_over()
+        scoreboard.restart()
+        snake.reset()
 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment)<10:
-            is_game_on=False
-            scoreboard.game_over()
-
+            scoreboard.restart()
+            snake.reset()
 
 screen.exitonclick()
 
@@ -76,6 +75,14 @@ class Snake:
         new_segment.goto(position)
         self.segments.append(new_segment)
 
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+
     def extend(self):
         self.add_segment(self.segments[-1].position())
     def move(self):
@@ -100,6 +107,8 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+
 
 
 ###food.py###
@@ -136,6 +145,8 @@ class Scoreboard(Turtle):
      def __init__(self):
          super().__init__()
          self.score=0
+         with open("/Users/Sakshi Mundada/Desktop/data.txt") as file:
+            self.highscore=int(file.read())
          self.color("white")
          self.penup()
          self.goto(0,273)
@@ -143,13 +154,17 @@ class Scoreboard(Turtle):
          self.update_scoreboard()
 
      def update_scoreboard(self):
-         self.write(f"Score={self.score}", align=ALIGNMENT, font=FONT)
+        self.clear()
+        self.write(f"Score={self.score} Highest Score:{self.highscore}", align=ALIGNMENT, font=FONT)
 
-     def game_over(self):
-         self.goto(0,0)
-         self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+     def restart(self):
+         if self.score>self.highscore:
+             self.highscore=self.score
+             with open("/Users/Sakshi Mundada/Desktop/data.txt", mode="w") as file:
+                 file.write(f'{self.highscore}')
+         self.score=0
+         self.update_scoreboard()
 
      def score_increase(self):
          self.score+=1
-         self.clear()
          self.update_scoreboard()
