@@ -1,3 +1,5 @@
+###main.py###
+
 import turtle
 import pandas
 
@@ -31,4 +33,39 @@ while len(guessed_states)<30:
         state_data=data[data.state==answer_state]
         t.goto(int(state_data.x),int(state_data.x))
         t.write(answer_state)
+
+
+###name_of_states.csv###
+state,x,y
+Andhra Pradesh,-55,-143
+Arunachal Pradesh,189,116
+Assam,175,75
+Bihar,71,63
+Chhattisgarh,0,-23
+Goa,-146,-135
+Gujarat,-187,7
+Haryana,-100,120
+Himachal Pradesh,-80,176
+Jammu and Kashmir,-116,205
+Jharkhand,54,20
+Karnataka,-115,-149
+Kerala,-104,-226
+Madhya Pradesh,-63,15
+Maharashtra,-119,-65
+Manipur,199,81
+Meghalaya,141,59
+Mizoram,193,53
+Nagaland,226,112
+Odisha,39,-39
+Punjab,-112,156
+Rajasthan,-146,61
+Sikkim,100,93
+Tamil Nadu,-65,-216
+Telangana,-56,-92
+Tripura,158,27
+Uttarakhand,-54,146
+Uttar Pradesh,-32,84
+West Bengal,95,7
+
+
 
