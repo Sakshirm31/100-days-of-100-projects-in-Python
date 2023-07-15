@@ -6,9 +6,13 @@ dict_nato_alphabet={row.letter:row.code for (index,row) in file.iterrows()}
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs
 
-word=input("Enter the word: ").upper()
-list_phonetic=[dict_nato_alphabet[letter] for letter in word]
-print(list_phonetic)
+   word=input("Enter the word: ").upper()
+try:
+    list_phonetic=[dict_nato_alphabet[letter] for letter in word]
+except KeyError:
+    print("Sorry,Only letter in the alphabet please")
+else:
+    print(list_phonetic)
 
 ###nato_phonetic_alphabet.csv###
 
