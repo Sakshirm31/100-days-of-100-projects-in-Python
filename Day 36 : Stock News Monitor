@@ -40,7 +40,7 @@ else:
     up_down="🔻"
 
 # - Work out the percentage difference in price between closing price yesterday and closing price the day before yesterday.
-percent_diff=round((difference/float(yesterdays_data))*100*6)
+percent_diff=round((difference/float(yesterdays_data))*100)
 print(percent_diff)
 #- If TODO4 percentage is greater than 5 then print("Get News").
 
